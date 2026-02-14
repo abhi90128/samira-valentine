@@ -4,107 +4,78 @@
 <meta charset="UTF-8">
 <title>Samira's Valentine Gift 💝</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
 
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#ffd1ff,#ffc3a0);
-background-size:400% 400%;
-animation:gradientMove 10s ease infinite;
-overflow-x:hidden;
+background:linear-gradient(135deg,#ffe6f0,#ffd1dc,#ffc0cb);
 text-align:center;
 color:#7a003c;
-}
-
-@keyframes gradientMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+overflow-x:hidden;
 }
 
 /* Floating hearts */
 .heart{
 position:fixed;
+color:#ff4d6d;
 font-size:18px;
 animation:float 8s linear infinite;
-opacity:.7;
 }
 @keyframes float{
 0%{transform:translateY(100vh);}
 100%{transform:translateY(-10vh);}
 }
 
-/* Entry screen */
-#passwordScreen{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-animation:fadeIn 2s ease;
-}
-
 h1{
 font-family:'Great Vibes',cursive;
 font-size:48px;
-margin-bottom:10px;
+margin-top:20px;
 }
 
-input{
-padding:12px;
-border-radius:25px;
-border:none;
-width:260px;
-text-align:center;
-margin-top:15px;
-}
-
+/* Buttons */
 button{
-padding:12px 28px;
-border-radius:30px;
+padding:12px 24px;
+border-radius:50px;
 border:none;
-margin:10px;
-background:linear-gradient(to right,#ff4d6d,#ff758c);
+margin:6px;
+background:linear-gradient(45deg,#ff4d6d,#ff758c);
 color:white;
+font-weight:600;
 cursor:pointer;
-transition:.4s;
-font-weight:bold;
+transition:.3s;
+box-shadow:0 6px 15px rgba(255,0,100,.3);
 }
 button:hover{
-transform:scale(1.1);
-box-shadow:0 0 20px rgba(255,105,135,.7);
+transform:translateY(-3px);
+box-shadow:0 10px 20px rgba(255,0,100,.5);
 }
 
+/* Section container */
 .section{
 display:none;
-animation:fadeUp 1s ease;
-}
-
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(30px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-.card{
-background:rgba(255,255,255,.6);
-backdrop-filter:blur(12px);
-border-radius:20px;
-padding:30px;
+background:white;
+border-radius:25px;
+padding:25px;
 width:90%;
-max-width:800px;
-margin:30px auto;
+max-width:1000px;
+margin:25px auto;
 box-shadow:0 10px 30px rgba(0,0,0,.1);
 }
 
-/* Flip cards */
+/* Mood cards */
+.moods{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+}
+
 .flip{
-width:180px;
+width:170px;
 height:230px;
 perspective:1000px;
-display:inline-block;
 margin:10px;
 }
 .flip-inner{
@@ -114,15 +85,13 @@ height:100%;
 transition:transform .8s;
 transform-style:preserve-3d;
 }
-.flip:hover .flip-inner{
-transform:rotateY(180deg);
-}
+.flip:hover .flip-inner{transform:rotateY(180deg);}
 .flip-front,.flip-back{
 position:absolute;
 width:100%;
 height:100%;
 backface-visibility:hidden;
-border-radius:15px;
+border-radius:20px;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -139,41 +108,78 @@ transform:rotateY(180deg);
 width:100%;
 height:100%;
 object-fit:cover;
-border-radius:15px;
+border-radius:20px;
 }
 
 /* Slideshow */
+.slideshow{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:380px;
+}
 .slideshow img{
-width:320px;
-border-radius:15px;
+width:380px;
+border-radius:20px;
 display:none;
-margin:10px;
+box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
 /* Wheel */
+#wheelContainer{
+position:relative;
+margin:30px auto;
+width:320px;
+height:320px;
+}
 #wheel{
-width:260px;
-height:260px;
+width:100%;
+height:100%;
 border-radius:50%;
-margin:20px auto;
-background:conic-gradient(
-#ff6b81 0% 25%,
-#ffa502 25% 50%,
-#ff4757 50% 75%,
-#e84393 75% 100%);
-transition:transform 4s ease-out;
-box-shadow:0 0 30px rgba(255,0,100,.6);
+transition:transform 4s ease;
+box-shadow:0 0 40px rgba(255,0,120,.6);
+}
+.pointer{
+position:absolute;
+top:-18px;
+left:50%;
+transform:translateX(-50%);
+border-left:18px solid transparent;
+border-right:18px solid transparent;
+border-bottom:35px solid #ff4d6d;
 }
 
-/* Confetti */
-.confetti{
-position:fixed;
-width:10px;
-height:10px;
-animation:fall 3s linear forwards;
+.segment-label{
+position:absolute;
+left:50%;
+top:50%;
+transform-origin:0 0;
+font-size:13px;
+font-weight:bold;
+color:white;
+text-align:center;
+width:120px;
+margin-left:-60px;
 }
-@keyframes fall{
-to{transform:translateY(100vh) rotate(360deg);}
+
+#movieText{
+font-size:22px;
+font-weight:bold;
+color:#ff4d6d;
+margin-top:15px;
+display:none;
+}
+
+/* Love timer */
+#counter{
+font-size:22px;
+font-weight:bold;
+}
+
+/* Letter */
+.letter{
+font-size:18px;
+line-height:1.6;
 }
 
 </style>
@@ -181,82 +187,99 @@ to{transform:translateY(100vh) rotate(360deg);}
 
 <body>
 
-<div id="passwordScreen">
-<h1>Welcome to Samira's Valentine Gift 💝</h1>
-<p>Enter password to unlock something magical</p>
+<!-- PASSWORD -->
+<div id="passwordScreen" class="section" style="display:block;">
+<h1>Samira's Valentine Gift 💝</h1>
+<p>Enter password to unlock</p>
 <input type="password" id="passwordInput">
-<button onclick="checkPassword()">Unlock My Heart 💖</button>
+<br>
+<button onclick="checkPassword()">Unlock 💖</button>
 </div>
 
+<!-- MAIN -->
 <div id="mainContent" style="display:none;">
 
-<div class="card">
+<h1>For My Samira 💖</h1>
+
+<!-- NAVIGATION (5 BUTTONS) -->
+<div>
 <button onclick="showSection('emotions')">Her Moods</button>
 <button onclick="showSection('memories')">Our Memories</button>
-<button onclick="showSection('favorites')">Her Favorites</button>
 <button onclick="showSection('wheelSection')">Wheel of Love</button>
-<button onclick="showSection('counterSection')">Love Timer</button>
+<button onclick="showSection('timerSection')">Love Timer</button>
+<button onclick="showSection('letterSection')">Valentine Letter</button>
 </div>
 
-<div id="emotions" class="section card">
+<!-- MOODS -->
+<div id="emotions" class="section">
+<div class="moods">
 
 <div class="flip"><div class="flip-inner">
-<div class="flip-front">Masoom 🥺</div>
-<div class="flip-back"><img src="images/masoom.jpg"></div>
+<div class="flip-front">Masoom</div>
+<div class="flip-back"><img src="images/masoom.jpeg"></div>
 </div></div>
 
 <div class="flip"><div class="flip-inner">
-<div class="flip-front">Bodybuilder 💪</div>
-<div class="flip-back"><img src="images/bodybuilder.jpg"></div>
+<div class="flip-front">Bodybuilder</div>
+<div class="flip-back"><img src="images/bodybuilder.jpeg"></div>
 </div></div>
 
 <div class="flip"><div class="flip-inner">
-<div class="flip-front">Dramebaz 🎭</div>
-<div class="flip-back"><img src="images/dramebaz.jpg"></div>
+<div class="flip-front">Dramebaz</div>
+<div class="flip-back"><img src="images/dramebaz.jpeg"></div>
 </div></div>
 
 <div class="flip"><div class="flip-inner">
-<div class="flip-front">Traditional 🌸</div>
-<div class="flip-back"><img src="images/traditional.jpg"></div>
+<div class="flip-front">Traditional</div>
+<div class="flip-back"><img src="images/traditional.jpeg"></div>
 </div></div>
 
 <div class="flip"><div class="flip-inner">
-<div class="flip-front">Unfiltered 😌</div>
-<div class="flip-back"><img src="images/unfiltered.jpg"></div>
+<div class="flip-front">Unfiltered</div>
+<div class="flip-back"><img src="images/unfiltered.jpeg"></div>
 </div></div>
 
 <div class="flip"><div class="flip-inner">
-<div class="flip-front">Cutie 💖</div>
-<div class="flip-back"><img src="images/cutie.jpg"></div>
+<div class="flip-front">Cutie</div>
+<div class="flip-back"><img src="images/cutie.jpeg"></div>
 </div></div>
 
 </div>
-
-<div id="memories" class="section card slideshow">
-<img src="images/masoom.jpg">
-<img src="images/bodybuilder.jpg">
-<img src="images/dramebaz.jpg">
-<img src="images/traditional.jpg">
-<img src="images/unfiltered.jpg">
-<img src="images/cutie.jpg">
 </div>
 
-<div id="favorites" class="section card">
-<p><b>Favorite Food:</b> Biryani 🍛</p>
-<p><b>Go-To Food:</b> French Fries 🍟</p>
-<p><b>Favorite Fruit:</b> Blueberry 🫐</p>
-<p><b>Favorite Flower:</b> Sunflower 🌻</p>
-<p><b>Favorite Person:</b> Obviously Abhishek 👑</p>
+<!-- MEMORIES -->
+<div id="memories" class="section">
+<div class="slideshow">
+<img src="images/us1.jpeg">
+<img src="images/us2.jpeg">
+<img src="images/us3.jpeg">
+</div>
 </div>
 
-<div id="wheelSection" class="section card">
+<!-- WHEEL -->
+<div id="wheelSection" class="section">
+<div id="wheelContainer">
+<div class="pointer"></div>
 <div id="wheel"></div>
-<button onclick="spinWheel()">Spin 💞</button>
-<p id="wheelResult"></p>
+</div>
+<button onclick="spinWheel()">Spin</button>
+<p id="movieText">Text me: Movie Date? 🎬💖</p>
 </div>
 
-<div id="counterSection" class="section card">
+<!-- LOVE TIMER -->
+<div id="timerSection" class="section">
 <p id="counter"></p>
+</div>
+
+<!-- LETTER -->
+<div id="letterSection" class="section">
+<div class="letter">
+<p>
+From the day we started talking, my world changed.  
+You became my happiness, my peace, my everything.  
+No matter what happens, I choose you. Always and forever. 💖
+</p>
+</div>
 </div>
 
 </div>
@@ -288,7 +311,7 @@ alert("Wrong Password 💔");
 }
 }
 
-/* Section */
+/* Navigation */
 function showSection(id){
 let sections=document.getElementsByClassName("section");
 for(let s of sections){s.style.display="none";}
@@ -305,33 +328,34 @@ slides[slideIndex].style.display="block";
 },3000);
 
 /* Wheel */
-const results=["Date Night 💑","Hug 🤗","Kiss 💋","Forever 💍"];
+const segments=["Date Night","Hug","Kiss","Forever","Movie","Love Letter"];
+const colors=["#ff6b81","#ffa502","#ff4757","#e84393","#fd79a8","#ff9ff3"];
+const wheel=document.getElementById("wheel");
+const angle=360/segments.length;
+
+wheel.style.background="conic-gradient("+colors.map((c,i)=>`${c} ${i*angle}deg ${(i+1)*angle}deg`).join(",")+")";
+
+segments.forEach((text,i)=>{
+let label=document.createElement("div");
+label.className="segment-label";
+label.innerText=text;
+let rotation=i*angle+angle/2;
+label.style.transform=`rotate(${rotation}deg) translate(120px) rotate(-${rotation}deg)`;
+wheel.appendChild(label);
+});
+
 function spinWheel(){
-let wheel=document.getElementById("wheel");
-let resultText=document.getElementById("wheelResult");
-let degree=1440+Math.random()*360;
-wheel.style.transform="rotate("+degree+"deg)";
-let result=results[Math.floor(Math.random()*results.length)];
+let movieIndex=4;
+let rotation=(360*5)+(movieIndex*angle);
+wheel.style.transform="rotate("+rotation+"deg)";
 setTimeout(()=>{
-resultText.innerHTML=result;
-confetti();
+document.getElementById("movieText").style.display="block";
 },4000);
 }
 
-/* Confetti */
-function confetti(){
-for(let i=0;i<50;i++){
-let c=document.createElement("div");
-c.className="confetti";
-c.style.left=Math.random()*100+"vw";
-c.style.background="hsl("+Math.random()*360+",100%,50%)";
-document.body.appendChild(c);
-setTimeout(()=>c.remove(),3000);
-}
-}
-
-/* Love Counter */
-let startDate=new Date("2023-01-01");
+/* Love timer 364 days */
+let startDate=new Date();
+startDate.setDate(startDate.getDate()-364);
 setInterval(()=>{
 let now=new Date();
 let days=Math.floor((now-startDate)/(1000*60*60*24));
