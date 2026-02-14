@@ -15,6 +15,7 @@ background:linear-gradient(135deg,#ffe6f0,#ffd1dc,#ffc0cb);
 text-align:center;
 color:#7a003c;
 overflow-x:hidden;
+position:relative;
 }
 
 /* Floating Hearts */
@@ -35,7 +36,6 @@ font-size:48px;
 margin-top:20px;
 }
 
-/* Buttons */
 button{
 padding:12px 24px;
 border-radius:50px;
@@ -53,7 +53,6 @@ transform:translateY(-3px);
 box-shadow:0 10px 20px rgba(255,0,100,.5);
 }
 
-/* Section container */
 .section{
 display:none;
 background:white;
@@ -151,6 +150,7 @@ border-left:18px solid transparent;
 border-right:18px solid transparent;
 border-bottom:35px solid #ff4d6d;
 }
+
 .segment-label{
 position:absolute;
 left:50%;
@@ -172,10 +172,15 @@ margin-top:15px;
 display:none;
 }
 
-/* Love timer */
+/* Love Timer */
 #counter{
 font-size:22px;
 font-weight:bold;
+}
+
+/* Fun Zone NO button */
+#noBtn{
+position:relative;
 }
 
 /* Letter */
@@ -210,6 +215,7 @@ line-height:1.6;
 <button onclick="showSection('wheelSection')">Wheel of Love</button>
 <button onclick="showSection('timerSection')">Love Timer</button>
 <button onclick="showSection('letterSection')">Valentine Letter</button>
+<button onclick="showSection('funSection')">Fun Zone 😜</button>
 </div>
 
 <!-- MOODS -->
@@ -282,6 +288,29 @@ You became my happiness, my peace, my everything.
 No matter what happens, I choose you. Always and forever. 💖
 </p>
 </div>
+</div>
+
+<!-- FUN ZONE -->
+<div id="funSection" class="section">
+<h2>Important Question 😏</h2>
+<p>Do you love Abhishek?</p>
+
+<button onclick="loveYes()">YES 💖</button>
+<button id="noBtn" onmouseover="moveNo()">NO 😒</button>
+
+<p id="loveAnswer"></p>
+
+<h3>Love Calculator 💕</h3>
+<button onclick="calculateLove()">Check Our Love %</button>
+<p id="lovePercent"></p>
+
+<h3>Daily Compliment ✨</h3>
+<button onclick="giveCompliment()">Click for Compliment</button>
+<p id="complimentText"></p>
+
+<button onclick="angryMode()">Angry Mode 😡</button>
+<button onclick="surprise()">Secret Surprise 🎁</button>
+
 </div>
 
 </div>
@@ -364,13 +393,51 @@ let days=Math.floor((now-startDate)/(1000*60*60*24));
 document.getElementById("counter").innerHTML=days+" days loving you 💞";
 },1000);
 
-/* Mobile Flip Support */
+/* Mobile Flip */
 const flipCards = document.querySelectorAll(".flip");
 flipCards.forEach(card => {
   card.addEventListener("click", function() {
     this.classList.toggle("active");
   });
 });
+
+/* FUN ZONE */
+function loveYes(){
+document.getElementById("loveAnswer").innerHTML="I knew it 😌💖";
+}
+
+function moveNo(){
+let btn=document.getElementById("noBtn");
+btn.style.position="absolute";
+btn.style.left=Math.random()*80+"%";
+btn.style.top=Math.random()*80+"%";
+}
+
+function calculateLove(){
+let percent=Math.floor(Math.random()*10)+91;
+document.getElementById("lovePercent").innerHTML="Our love is "+percent+"% 💞";
+}
+
+const compliments=[
+"You are dangerously cute 🥺",
+"You are my favorite notification 📱💖",
+"You glow differently ✨",
+"You are my peace 🕊️",
+"You are illegally beautiful 😍"
+];
+
+function giveCompliment(){
+let random=Math.floor(Math.random()*compliments.length);
+document.getElementById("complimentText").innerHTML=compliments[random];
+}
+
+function angryMode(){
+alert("Just kidding 😜 I can never be angry at you");
+}
+
+function surprise(){
+alert("Surprise! You are stuck with me forever 😌💍");
+}
 
 </script>
 
