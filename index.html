@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Samira's Valentine Gift 💝</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#ffd1ff,#ffc3a0);
+background-size:400% 400%;
+animation:gradientMove 10s ease infinite;
+overflow-x:hidden;
+text-align:center;
+color:#7a003c;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* Floating hearts */
+.heart{
+position:fixed;
+font-size:18px;
+animation:float 8s linear infinite;
+opacity:.7;
+}
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+/* Entry screen */
+#passwordScreen{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+animation:fadeIn 2s ease;
+}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:48px;
+margin-bottom:10px;
+}
+
+input{
+padding:12px;
+border-radius:25px;
+border:none;
+width:260px;
+text-align:center;
+margin-top:15px;
+}
+
+button{
+padding:12px 28px;
+border-radius:30px;
+border:none;
+margin:10px;
+background:linear-gradient(to right,#ff4d6d,#ff758c);
+color:white;
+cursor:pointer;
+transition:.4s;
+font-weight:bold;
+}
+button:hover{
+transform:scale(1.1);
+box-shadow:0 0 20px rgba(255,105,135,.7);
+}
+
+.section{
+display:none;
+animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.card{
+background:rgba(255,255,255,.6);
+backdrop-filter:blur(12px);
+border-radius:20px;
+padding:30px;
+width:90%;
+max-width:800px;
+margin:30px auto;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+/* Flip cards */
+.flip{
+width:180px;
+height:230px;
+perspective:1000px;
+display:inline-block;
+margin:10px;
+}
+.flip-inner{
+position:relative;
+width:100%;
+height:100%;
+transition:transform .8s;
+transform-style:preserve-3d;
+}
+.flip:hover .flip-inner{
+transform:rotateY(180deg);
+}
+.flip-front,.flip-back{
+position:absolute;
+width:100%;
+height:100%;
+backface-visibility:hidden;
+border-radius:15px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+}
+.flip-front{
+background:#ff758c;
+color:white;
+}
+.flip-back{
+transform:rotateY(180deg);
+}
+.flip-back img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:15px;
+}
+
+/* Slideshow */
+.slideshow img{
+width:320px;
+border-radius:15px;
+display:none;
+margin:10px;
+}
+
+/* Wheel */
+#wheel{
+width:260px;
+height:260px;
+border-radius:50%;
+margin:20px auto;
+background:conic-gradient(
+#ff6b81 0% 25%,
+#ffa502 25% 50%,
+#ff4757 50% 75%,
+#e84393 75% 100%);
+transition:transform 4s ease-out;
+box-shadow:0 0 30px rgba(255,0,100,.6);
+}
+
+/* Confetti */
+.confetti{
+position:fixed;
+width:10px;
+height:10px;
+animation:fall 3s linear forwards;
+}
+@keyframes fall{
+to{transform:translateY(100vh) rotate(360deg);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="passwordScreen">
+<h1>Welcome to Samira's Valentine Gift 💝</h1>
+<p>Enter password to unlock something magical</p>
+<input type="password" id="passwordInput">
+<button onclick="checkPassword()">Unlock My Heart 💖</button>
+</div>
+
+<div id="mainContent" style="display:none;">
+
+<div class="card">
+<button onclick="showSection('emotions')">Her Moods</button>
+<button onclick="showSection('memories')">Our Memories</button>
+<button onclick="showSection('favorites')">Her Favorites</button>
+<button onclick="showSection('wheelSection')">Wheel of Love</button>
+<button onclick="showSection('counterSection')">Love Timer</button>
+</div>
+
+<div id="emotions" class="section card">
+
+<div class="flip"><div class="flip-inner">
+<div class="flip-front">Masoom 🥺</div>
+<div class="flip-back"><img src="images/masoom.jpg"></div>
+</div></div>
+
+<div class="flip"><div class="flip-inner">
+<div class="flip-front">Bodybuilder 💪</div>
+<div class="flip-back"><img src="images/bodybuilder.jpg"></div>
+</div></div>
+
+<div class="flip"><div class="flip-inner">
+<div class="flip-front">Dramebaz 🎭</div>
+<div class="flip-back"><img src="images/dramebaz.jpg"></div>
+</div></div>
+
+<div class="flip"><div class="flip-inner">
+<div class="flip-front">Traditional 🌸</div>
+<div class="flip-back"><img src="images/traditional.jpg"></div>
+</div></div>
+
+<div class="flip"><div class="flip-inner">
+<div class="flip-front">Unfiltered 😌</div>
+<div class="flip-back"><img src="images/unfiltered.jpg"></div>
+</div></div>
+
+<div class="flip"><div class="flip-inner">
+<div class="flip-front">Cutie 💖</div>
+<div class="flip-back"><img src="images/cutie.jpg"></div>
+</div></div>
+
+</div>
+
+<div id="memories" class="section card slideshow">
+<img src="images/masoom.jpg">
+<img src="images/bodybuilder.jpg">
+<img src="images/dramebaz.jpg">
+<img src="images/traditional.jpg">
+<img src="images/unfiltered.jpg">
+<img src="images/cutie.jpg">
+</div>
+
+<div id="favorites" class="section card">
+<p><b>Favorite Food:</b> Biryani 🍛</p>
+<p><b>Go-To Food:</b> French Fries 🍟</p>
+<p><b>Favorite Fruit:</b> Blueberry 🫐</p>
+<p><b>Favorite Flower:</b> Sunflower 🌻</p>
+<p><b>Favorite Person:</b> Obviously Abhishek 👑</p>
+</div>
+
+<div id="wheelSection" class="section card">
+<div id="wheel"></div>
+<button onclick="spinWheel()">Spin 💞</button>
+<p id="wheelResult"></p>
+</div>
+
+<div id="counterSection" class="section card">
+<p id="counter"></p>
+</div>
+
+</div>
+
+<audio id="bgMusic" loop>
+<source src="maula mere maula.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* Floating hearts */
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤";
+heart.style.left=Math.random()*100+"vw";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),8000);
+},600);
+
+/* Password */
+function checkPassword(){
+if(document.getElementById("passwordInput").value==="abhishekbabu"){
+document.getElementById("passwordScreen").style.display="none";
+document.getElementById("mainContent").style.display="block";
+document.getElementById("bgMusic").play();
+}else{
+alert("Wrong Password 💔");
+}
+}
+
+/* Section */
+function showSection(id){
+let sections=document.getElementsByClassName("section");
+for(let s of sections){s.style.display="none";}
+document.getElementById(id).style.display="block";
+}
+
+/* Slideshow */
+let slideIndex=0;
+setInterval(()=>{
+let slides=document.querySelectorAll(".slideshow img");
+slides.forEach(s=>s.style.display="none");
+slideIndex=(slideIndex+1)%slides.length;
+slides[slideIndex].style.display="block";
+},3000);
+
+/* Wheel */
+const results=["Date Night 💑","Hug 🤗","Kiss 💋","Forever 💍"];
+function spinWheel(){
+let wheel=document.getElementById("wheel");
+let resultText=document.getElementById("wheelResult");
+let degree=1440+Math.random()*360;
+wheel.style.transform="rotate("+degree+"deg)";
+let result=results[Math.floor(Math.random()*results.length)];
+setTimeout(()=>{
+resultText.innerHTML=result;
+confetti();
+},4000);
+}
+
+/* Confetti */
+function confetti(){
+for(let i=0;i<50;i++){
+let c=document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+c.style.background="hsl("+Math.random()*360+",100%,50%)";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),3000);
+}
+}
+
+/* Love Counter */
+let startDate=new Date("2023-01-01");
+setInterval(()=>{
+let now=new Date();
+let days=Math.floor((now-startDate)/(1000*60*60*24));
+document.getElementById("counter").innerHTML=days+" days loving you 💞";
+},1000);
+
+</script>
+
+</body>
+</html>
